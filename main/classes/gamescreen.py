@@ -24,5 +24,11 @@ class GameScreen(object):
         self.draw_background()
         self.draw_hero(coord=map.hero)
         pygame.display.flip()
+
+    def draw_walls(self, walls, tile):
+        for row in range(ROWS):
+            for col in range(COLUMNS):
+                    if walls[row][col] != 0:
+                        self.screen.blit(tile, (row*TILE_SIZE, col*TILE_SIZE))
     
     
