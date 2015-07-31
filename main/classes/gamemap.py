@@ -36,6 +36,21 @@ class Map(object):
         else:
             return False
 
+    def clear_block(self, position):
+        x, y = position
+        col = y // TILE_SIZE
+        row = x // TILE_SIZE
+
+        self.cleared[row][col] = 1
+        if row < ROWS-1:
+            self.cleared[row+1][col] = 1
+        if row > 0:
+            self.cleared[row-1][col] = 1
+        if col < COLUMNS-1:
+            self.cleared[row][col+1] = 1
+        if col > 0:
+            self.cleared[row][col-1] = 1
+
     def set_current_position(self, position):
         self.current = self.get_blank_map()
         row, col = position

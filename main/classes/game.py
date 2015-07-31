@@ -19,7 +19,10 @@ class Game(object):
         self.clock = pygame.time.Clock()
         self.direction = 0
 
+        self.map.clear_block(self.map.hero)
         self.map.set_current_position(self.map.hero)
+
+        self.gamescreen.draw_screen_layers(hero_stats=self.hero_stats, map=self.map)
         
         self.run()
 
@@ -46,6 +49,8 @@ class Game(object):
             self.clock.tick(30)
             for event in pygame.event.get():
                 if event.type == QUIT:
+                    pygame.quit()
+                    #
                     sys.exit(0)
                 if event.type == KEYDOWN:
                     if event.key == K_ESCAPE:

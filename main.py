@@ -9,6 +9,7 @@ from game import Game
 def main():
     while 1:
         pygame.init()
+        pygame.display.set_caption('Dark Castle')
         game = Game()
 
 if __name__ == "__main__":
