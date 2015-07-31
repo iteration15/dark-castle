@@ -10,10 +10,10 @@ class Game(object):
 
     def __init__(self):
         self.gamescreen = GameScreen()
-        self.bg = pygame.image.load(IMG_DIR + 'bglvl1.png')
+        self.bg = pygame.image.load(IMG_DIR + IMG_BG_LVL1)
 
         self.map = Map()
-        self.map.hero = (140,100)
+        self.map.hero = (START_Y, START_X)
         self.hero_stats = Hero()
 
         self.clock = pygame.time.Clock()

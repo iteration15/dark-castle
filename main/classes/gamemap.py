@@ -9,7 +9,7 @@ class Map(object):
         self.cleared = self.get_blank_map()
         self.current = self.get_blank_map()
         self.walls = self.get_blank_map()
-        self.hero = (140,100)
+        self.hero = (START_Y, START_X)
         self.floor = self.get_blank_map()
         self.fill_map()
 

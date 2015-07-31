@@ -5,13 +5,13 @@ from constants import *
 class GameScreen(object):
     def __init__(self):
         self.selected_tile = [0,0]
-        self.screen = pygame.display.set_mode((1024,1024))
-        self.font = pygame.font.SysFont(None,48)
-        self.font = pygame.font.SysFont(None,20)
-        self.bg = pygame.image.load(IMG_DIR + 'bglvl1.png')
-        self.hero_blit = pygame.image.load(IMG_DIR + 'hero_down.png')
+        self.screen = pygame.display.set_mode((DIS_Y, DIS_X))
+        self.font = pygame.font.SysFont(None,RFONT_SIZE)
+        self.small_font = pygame.font.SysFont(None,SFONT_SIZE)
+        self.bg = pygame.image.load(IMG_DIR + IMG_BG_LVL1)
+        self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_D)
         self.draw_background()
-        self.draw_hero((140,100))
+        self.draw_hero((START_Y, START_X))
         pygame.display.flip()
 
     def draw_background(self):
