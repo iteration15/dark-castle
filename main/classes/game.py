@@ -2,13 +2,13 @@ import pygame, sys, pickle
 from pygame.locals import *
 
 from constants import *
+from gamemap import Map
 from gamescreen import GameScreen
 from hero import Hero
 
 class Game(object):
 
     def __init__(self):
-
         self.screen = GameScreen()
         self.bg = pygame.image.load(IMG_DIR + 'bglvl1.png')
 
@@ -17,7 +17,6 @@ class Game(object):
 
 
     def end_game(self):
-
         sys.exit()
 
     

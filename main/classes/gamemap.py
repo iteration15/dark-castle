@@ -10,10 +10,11 @@ class Map(object):
         self.current = self.get_blank_map()
         self.walls = self.get_blank_map()
         self.hero = (0,0)
+        self.floor = self.get_blank_map()
         self.fill_map()
 
     def fill_map(self):
-        for i in range(ROWS)
+        for i in range(ROWS):
             for j in range(COLUMNS):
                 if not self.floor[i][j]:
                     self.walls[i][j] = 1
