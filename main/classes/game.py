@@ -1,0 +1,18 @@
+import pygame, sys, pickle
+from pygame.locals import *
+
+from constants import *
+from gamescreen import GameScreen
+
+class Game(object):
+
+    def __init__(self):
+
+        self.screen = GameScreen()
+        self.bg = pygame.image.load(IMG_DIR + 'bglvl1.png')
+
+    def end_game(self):
+
+        sys.exit()
+
+    
