@@ -2,14 +2,14 @@ from os.path import abspath, dirname, join, sep
 
 MOVE_SIZE = 12
 RADIUS = 2
-START_Y = 140 #vert
-START_X = 100 #hori
+START_Y = 140 
+START_X = 140
 DIS_Y = 800
 DIS_X = 800
 COLUMNS = 100
 ROWS = 100
 TILE_SIZE = 20
-MOVERATE = 2
+MOVERATE = 3
 RFONT_SIZE = 48
 SFONT_SIZE = 20
 DIRECTIONS = ['North','South','East','West']

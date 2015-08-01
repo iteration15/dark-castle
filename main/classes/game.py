@@ -23,7 +23,7 @@ class Game(object):
         
         #self.map.set_current_position(self.map.hero)
 
-        #self.gamescreen.draw_screen_layers(map=self.map, hero_stats=self.hero_stats)
+        self.gamescreen.draw_screen_layers(map=self.map, hero_stats=self.hero_stats)
         
         self.runGame()
 
@@ -67,6 +67,9 @@ class Game(object):
         while True:
             self.clock.tick(30)
             heroMoveTo = None
+
+            # draw background
+            self.gamescreen.draw_background()
 
             # draw hero
             if not gameOverMode:

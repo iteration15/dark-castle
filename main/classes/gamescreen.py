@@ -33,7 +33,7 @@ class GameScreen(object):
         #self.draw_walls(map.floor, self.floor_tile)
         self.draw_walls(map.walls, self.wall_tile)
         self.draw_background()
-        self.draw_hero(coord=map.hero)
+        #self.draw_hero(coord=map.hero)
 
         pygame.display.flip()
 
