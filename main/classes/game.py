@@ -56,15 +56,19 @@ class Game(object):
 
         heroObj = {'surface': pygame.image.load(IMG_DIR + IMG_HERO_D),
                              'facing': LEFT,
-                             'x' : HALF_WINWIDTH,
-                             'y' : HALF_WINHEIGHT,
+                             'x' : START_X,
+                             'y' : START_Y,
                              'health' : MAXHEALTH}
+
+        if not gameOverMode:
+            self.gamescreen.draw_hero((heroObj['x'],heroObj['y']))
 
         # main game loop
         while True:
             self.clock.tick(30)
             heroMoveTo = None
 
+            # draw hero
             if not gameOverMode:
                 self.gamescreen.draw_hero((heroObj['x'],heroObj['y']))
             
@@ -73,7 +77,6 @@ class Game(object):
                     self.endGame()
                     
                 elif event.type == KEYDOWN:
-                    # handle key presses
                     if event.key in (K_UP, K_w) :
                        moveDown = False
                        moveUp = True
