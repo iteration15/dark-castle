@@ -9,39 +9,23 @@ from hero import Hero
 class Game(object):
 
     def __init__(self):
-        #initializes GameScreen
+        #initialize GameScreen
         self.gamescreen = GameScreen()
-        #initializes Map
+        #initialize Map
         self.map = Map()
-        #initializes Hero
-        self.hero_stats = Hero()
+        #initialize Hero
+        #self.hero = Hero()
 
         self.clock = pygame.time.Clock()
         self.direction = 0
 
-        #self.map.clear_block(self.map.hero)
-        
-        #self.map.set_current_position(self.map.hero)
-
-        self.gamescreen.draw_screen_layers(map=self.map, hero_stats=self.hero_stats)
+        self.gamescreen.draw_screen_layers(map=self.map)
         
         self.runGame()
 
-    def moveHero(self, heroX, heroY):
-        self.old_row, self.old_col = self.map.hero
-        row = self.old_row + heroX
-        col = self.old_col + heroY
-        if row > (ROWS-1) * TILE_SIZE or row < 0 or col > (COLUMNS-1) * TILE_SIZE or col < 0:
-            return
-        if self.map.has_wall(row, col):
-            return
-        self.map.hero = (row, col)
-        #self.map.clear_block(self.map.player)
-        self.map.set_current_position(self.map.hero)
-
     def refresh_screen(self):
         self.gamescreen.draw_hero(self.map.hero)
-        self.gamescreen.draw_screen_layers(self.map, self.hero_stats)
+        self.gamescreen.draw_screen_layers(self.map)
 
     def runGame(self):
         heroX = 0
@@ -52,17 +36,15 @@ class Game(object):
         moveDown = False
         gameOverMode = False
 
+        heroImg = IMG_HERO_D
+
         DISPLAYSURF = pygame.display.set_mode((DIS_X, DIS_Y))
 
-        heroObj = {'surface': pygame.image.load(IMG_DIR + IMG_HERO_D),
-                             'facing': LEFT,
+        heroObj = {'surf' : heroImg,
                              'x' : START_X,
                              'y' : START_Y,
                              'health' : MAXHEALTH}
-
-        if not gameOverMode:
-            self.gamescreen.draw_hero((heroObj['x'],heroObj['y']))
-
+        
         # main game loop
         while True:
             self.clock.tick(30)
@@ -73,7 +55,7 @@ class Game(object):
 
             # draw hero
             if not gameOverMode:
-                self.gamescreen.draw_hero((heroObj['x'],heroObj['y']))
+                self.gamescreen.draw_hero((heroObj['x'], heroObj['y']), heroObj['surf'])
             
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -108,6 +90,7 @@ class Game(object):
             if not gameOverMode:
                 if moveLeft:
                     heroObj['x'] -= MOVERATE
+                    #heroObj['surf'] = 
                 if moveRight:
                    heroObj['x'] += MOVERATE
                 if moveUp:
@@ -115,23 +98,8 @@ class Game(object):
                 if moveDown:
                     heroObj['y'] += MOVERATE
                 
-            #self.refresh_screen()
             pygame.display.update()
                         
     def endGame(self):
         pygame.quit()
         sys.exit(0)
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    

@@ -13,35 +13,32 @@ class GameScreen(object):
         self.bg = pygame.image.load(IMG_DIR + IMG_BG_LVL1)
         
         self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_D)
-        
-        self.wall_tile = pygame.image.load(IMG_DIR + IMG_WALL)
-        
-        self.floor_tile = pygame.image.load(IMG_DIR + IMG_FLOOR)
-
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_D3)
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_L1)
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_L2)
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_L3)
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_R1)
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_R2)
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_R3)
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_U1)
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_U2)
+        #self.hero_blit = pygame.image.load(IMG_DIR + IMG_HERO_U3)
         
         self.draw_background()
-        #self.draw_hero((START_Y, START_X))
+
         pygame.display.flip()
 
     def draw_background(self):
         self.screen.blit(self.bg,(0,0))
 
-    def draw_hero(self, coord):
+    def draw_hero(self, coord, heroImg):
         self.screen.blit(self.hero_blit, coord)
 
-    def draw_screen_layers(self, map, hero_stats):
-        #self.draw_walls(map.floor, self.floor_tile)
-        self.draw_walls(map.walls, self.wall_tile)
+    def draw_screen_layers(self, map):
         self.draw_background()
-        #self.draw_hero(coord=map.hero)
 
         pygame.display.flip()
 
-    def draw_walls(self, walls, tile):
-        for row in range(ROWS):
-            for col in range(COLUMNS):
-                    if walls[row][col] != 0:
-                        self.screen.blit(tile, (row*TILE_SIZE, col*TILE_SIZE))
 
 
 
