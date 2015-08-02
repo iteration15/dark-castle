@@ -90,13 +90,16 @@ class Game(object):
             if not gameOverMode:
                 if moveLeft:
                     heroObj['x'] -= MOVERATE
-                    #heroObj['surf'] = 
+                    heroObj['surf'] = IMG_HERO_L1
                 if moveRight:
                    heroObj['x'] += MOVERATE
+                   heroObj['surf'] = IMG_HERO_R1
                 if moveUp:
                     heroObj['y'] -= MOVERATE
+                    heroObj['surf'] = IMG_HERO_U1
                 if moveDown:
                     heroObj['y'] += MOVERATE
+                    heroObj['surf'] = IMG_HERO_D
                 
             pygame.display.update()
                         
