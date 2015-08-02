@@ -32,8 +32,8 @@ class Game(object):
         # main game loop
         while True:
             # draw background
-            self.gamescreen.draw_background()
-            
+            self.gamescreen.drawBackground()
+           
             for event in pygame.event.get():
                 if event.type == QUIT:
                     self.endGame()                  
@@ -66,16 +66,13 @@ class Game(object):
             if not gameOverMode:
                 if moveLeft:
                     heroObj['x'] -= self.speed
-                    heroObj['surf'] = IMG_HERO_L1
-                    self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), heroObj['surf'])
+                    self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), IMG_HERO_L1)
                 if moveRight:
                     heroObj['x'] += self.speed 
-                    heroObj['surf'] = IMG_HERO_R1
-                    self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), heroObj['surf'])
+                    self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), IMG_HERO_R1)
                 if moveUp:
                     heroObj['y'] -= self.speed 
-                    heroObj['surf'] = IMG_HERO_U1
-                    self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), heroObj['surf'])
+                    self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), IMG_HERO_U1)
                 if moveDown:
                     heroObj['y'] += self.speed 
                     self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), IMG_HERO_D)

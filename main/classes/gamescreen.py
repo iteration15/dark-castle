@@ -14,9 +14,9 @@ class GameScreen(object):
         
         #load lvl 1 background
         self.bg = pygame.image.load(IMG_DIR + IMG_BG_LVL1)
-
+        self.hero = pygame.image.load(IMG_DIR + IMG_HERO_D)
+        
         self.index = 0
-        self.pause = 0
 
         self.moveDown = []
         self.moveDown.append(loadImage(IMG_HERO_D))
@@ -36,13 +36,18 @@ class GameScreen(object):
         self.moveUp.append(loadImage(IMG_HERO_U1))
         self.moveUp.append(loadImage(IMG_HERO_U2))
         self.moveUp.append(loadImage(IMG_HERO_U3))
-        
-        self.draw_background()
+
+        # draw for initial state
+        self.drawBackground()
+        self.drawHero()
 
         pygame.display.flip()
 
-    def draw_background(self):
-        self.screen.blit(self.bg,(0,0))      
+    def drawBackground(self):
+        self.screen.blit(self.bg,(0,0))
+
+    def drawHero(self):
+        self.screen.blit(self.hero,(START_X, START_Y))
 
     def heroWalk(self, coord, heroImg):
         if heroImg == IMG_HERO_D:
@@ -71,9 +76,6 @@ class GameScreen(object):
             self.screen.blit(self.image, coord)
         pygame.display.update()
 
-
     def draw_screen_layers(self):
         self.draw_background()
-
-        #pygame.display.flip()
 
