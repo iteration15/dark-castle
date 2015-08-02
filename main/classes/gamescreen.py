@@ -15,18 +15,27 @@ class GameScreen(object):
         
         #load lvl 1 background
         self.bg = pygame.image.load(IMG_DIR + IMG_BG_LVL1)
-        
-        self.hero_blitD = loadImage(IMG_HERO_D)
-        self.hero_blitD3 = loadImage(IMG_HERO_D3)
-        self.hero_blitL1 = loadImage(IMG_HERO_L1)
-        self.hero_blitL2 = loadImage(IMG_HERO_L2)
-        self.hero_blitL3 = loadImage(IMG_HERO_L3)
-        self.hero_blitR1 = loadImage(IMG_HERO_R1)
-        self.hero_blitR2 = loadImage(IMG_HERO_R2)
-        self.hero_blitR3 = loadImage(IMG_HERO_R3)
-        self.hero_blitU1 = loadImage(IMG_HERO_U1)
-        self.hero_blitU2 = loadImage(IMG_HERO_U2)
-        self.hero_blitU3 = loadImage(IMG_HERO_U3)
+
+        self.index = 0
+
+        self.moveDown = []
+        self.moveDown.append(loadImage(IMG_HERO_D))
+        self.moveDown.append(loadImage(IMG_HERO_D3))
+
+        self.moveLeft = []
+        self.moveLeft.append(loadImage(IMG_HERO_L1))
+        self.moveLeft.append(loadImage(IMG_HERO_L2))
+        self.moveLeft.append(loadImage(IMG_HERO_L3))
+
+        self.moveRight = []
+        self.moveRight.append(loadImage(IMG_HERO_R1))
+        self.moveRight.append(loadImage(IMG_HERO_R2))
+        self.moveRight.append(loadImage(IMG_HERO_R3))
+
+        self.moveUp = []
+        self.moveUp.append(loadImage(IMG_HERO_U1))
+        self.moveUp.append(loadImage(IMG_HERO_U2))
+        self.moveUp.append(loadImage(IMG_HERO_U3))
         
         self.draw_background()
 
@@ -37,22 +46,33 @@ class GameScreen(object):
 
     def draw_hero(self, coord, heroImg):
         if heroImg == IMG_HERO_D:
-            self.screen.blit(self.hero_blitD, coord)
+            self.index += 1
+            if self.index >= len(self.moveDown):
+                self.index = 0
+            self.image = self.moveDown[self.index]
+            self.screen.blit(self.image, coord)               
         elif heroImg == IMG_HERO_L1:
-            self.screen.blit(self.hero_blitL1, coord)
+            self.index += 1
+            if self.index >= len(self.moveLeft):
+                self.index = 0
+            self.image = self.moveLeft[self.index]
+            self.screen.blit(self.image, coord)
         elif heroImg == IMG_HERO_R1:
-            self.screen.blit(self.hero_blitR1, coord)
+            self.index += 1
+            if self.index >= len(self.moveRight):
+                self.index = 0
+            self.image = self.moveRight[self.index]
+            self.screen.blit(self.image, coord)
         elif heroImg == IMG_HERO_U1:
-            self.screen.blit(self.hero_blitU1, coord)
+            self.index += 1
+            if self.index >= len(self.moveUp):
+                self.index = 0
+            self.image = self.moveUp[self.index]
+            self.screen.blit(self.image, coord)
+
 
     def draw_screen_layers(self, map):
         self.draw_background()
 
         pygame.display.flip()
 
-
-
-
-                        
-    
-    
