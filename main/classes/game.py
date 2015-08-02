@@ -39,17 +39,27 @@ class Game(object):
                     self.endGame()                  
                 elif event.type == KEYDOWN:
                     if event.key in (K_UP, K_w) :
+                        #setting other directions to False
+                        #gets rid of the diagonal issue
                        moveDown = False
                        moveUp = True
+                       moveLeft = False
+                       moveRight = False
                     elif event.key in (K_DOWN, K_s):
                         moveUp = False
                         moveDown = True
+                        moveLeft = False
+                        moveRight = False
                     elif event.key in (K_LEFT, K_a):
                         moveRight = False
                         moveLeft = True
+                        moveUp = False
+                        moveDown = False
                     elif event.key in (K_RIGHT, K_d):
                         moveLeft = False
                         moveRight = True
+                        moveUp = False
+                        moveDown = False
                         
                 elif event.type == KEYUP:
                     if event.key in (K_LEFT, K_a):
