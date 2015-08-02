@@ -3,6 +3,7 @@ from pygame.locals import *
 
 from constants import *
 from gamescreen import GameScreen
+from walls import Wall
 
 class Game(object):
 
@@ -10,8 +11,14 @@ class Game(object):
         #initialize GameScreen
         self.gamescreen = GameScreen()
 
-        self.state = 0
-        self.speed = 5
+        all_sprite_list = pygame.sprite.Group()
+        wall_list = pygame.sprite.Group()
+        wall = Wall(0, 0, 10, 600)
+        wall_list.add(wall)
+        all_sprite_list.add(wall)
+
+        #self.state = 0
+        self.speed = MOVERATE
        
         self.runGame()
 
@@ -22,6 +29,9 @@ class Game(object):
         moveDown = False
         gameOverMode = False
 
+        cameraX = 0
+        cameraY = 0
+
         heroImg = IMG_HERO_D
 
         heroObj = {'surf' : heroImg,
@@ -31,8 +41,22 @@ class Game(object):
         
         # main game loop
         while True:
-            # draw background
-            self.gamescreen.drawBackground()
+            # draw background here prevents sprite duplication
+            #self.gamescreen.drawBackground()
+
+            heroX = heroObj['x']
+            heroY = heroObj['y']
+            
+            if (cameraX + START_X) - heroX > CAMERASLACK:
+                cameraX = heroX + CAMERASLACK - START_X
+            elif heroX - (cameraX + START_X) > CAMERASLACK:
+                cameraX = heroX - CAMERASLACK - START_X
+            if (cameraY + START_Y) - heroY > CAMERASLACK:
+                cameraY = heroY + CAMERASLACK - START_Y
+            elif heroY - (cameraY + START_Y) > CAMERASLACK:
+                cameraY = heroY - CAMERASLACK - START_Y
+
+            self.gamescreen.drawCamera(cameraX, cameraY, heroX, heroY)
            
             for event in pygame.event.get():
                 if event.type == QUIT:
