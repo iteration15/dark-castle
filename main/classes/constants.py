@@ -2,14 +2,13 @@ from os.path import abspath, dirname, join, sep
 
 START_Y = 140 
 START_X = 140
-DIS_Y = 600
-DIS_X = 800
-MOVERATE = 3
+DIS_Y = 1024
+DIS_X = 1024
+MOVERATE = 5
 RFONT_SIZE = 48
 SFONT_SIZE = 20
 MAXHEALTH = 3
 BLUE = (50, 50, 255)
-CAMERASLACK = 300
 
 IMG_DIR = join(dirname(dirname(abspath(__file__))),"graphics") + sep
 
