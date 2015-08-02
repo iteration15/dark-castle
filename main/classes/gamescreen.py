@@ -8,7 +8,6 @@ def loadImage(name):
 
 class GameScreen(object):
     def __init__(self):
-        self.selected_tile = [0,0]
         self.screen = pygame.display.set_mode((DIS_Y, DIS_X))
         self.font = pygame.font.SysFont(None,RFONT_SIZE)
         self.small_font = pygame.font.SysFont(None,SFONT_SIZE)
@@ -71,7 +70,7 @@ class GameScreen(object):
             self.screen.blit(self.image, coord)
 
 
-    def draw_screen_layers(self, map):
+    def draw_screen_layers(self):
         self.draw_background()
 
         pygame.display.flip()
