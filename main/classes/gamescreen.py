@@ -2,6 +2,10 @@ import pygame
 
 from constants import *
 
+def loadImage(name):
+    image = pygame.image.load(IMG_DIR + name)
+    return image
+
 class GameScreen(object):
     def __init__(self):
         self.selected_tile = [0,0]
@@ -12,17 +16,17 @@ class GameScreen(object):
         #load lvl 1 background
         self.bg = pygame.image.load(IMG_DIR + IMG_BG_LVL1)
         
-        self.hero_blitD = pygame.image.load(IMG_DIR + IMG_HERO_D)
-        self.hero_blitD3 = pygame.image.load(IMG_DIR + IMG_HERO_D3)
-        self.hero_blitL1 = pygame.image.load(IMG_DIR + IMG_HERO_L1)
-        self.hero_blitL2 = pygame.image.load(IMG_DIR + IMG_HERO_L2)
-        self.hero_blitL3 = pygame.image.load(IMG_DIR + IMG_HERO_L3)
-        self.hero_blitR1 = pygame.image.load(IMG_DIR + IMG_HERO_R1)
-        self.hero_blitR2 = pygame.image.load(IMG_DIR + IMG_HERO_R2)
-        self.hero_blitR3 = pygame.image.load(IMG_DIR + IMG_HERO_R3)
-        self.hero_blitU1 = pygame.image.load(IMG_DIR + IMG_HERO_U1)
-        self.hero_blitU2 = pygame.image.load(IMG_DIR + IMG_HERO_U2)
-        self.hero_blitU3 = pygame.image.load(IMG_DIR + IMG_HERO_U3)
+        self.hero_blitD = loadImage(IMG_HERO_D)
+        self.hero_blitD3 = loadImage(IMG_HERO_D3)
+        self.hero_blitL1 = loadImage(IMG_HERO_L1)
+        self.hero_blitL2 = loadImage(IMG_HERO_L2)
+        self.hero_blitL3 = loadImage(IMG_HERO_L3)
+        self.hero_blitR1 = loadImage(IMG_HERO_R1)
+        self.hero_blitR2 = loadImage(IMG_HERO_R2)
+        self.hero_blitR3 = loadImage(IMG_HERO_R3)
+        self.hero_blitU1 = loadImage(IMG_HERO_U1)
+        self.hero_blitU2 = loadImage(IMG_HERO_U2)
+        self.hero_blitU3 = loadImage(IMG_HERO_U3)
         
         self.draw_background()
 
