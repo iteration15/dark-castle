@@ -3,7 +3,7 @@ from pygame.locals import *
 
 from constants import *
 from gamescreen import GameScreen
-from walls import Wall
+from wall import Wall
 
 class Game(object):
 
@@ -13,9 +13,8 @@ class Game(object):
 
         all_sprite_list = pygame.sprite.Group()
         wall_list = pygame.sprite.Group()
-        wall = Wall(0, 0, 10, 600)
-        wall_list.add(wall)
-        all_sprite_list.add(wall)
+        myWall = Wall(0, 0, 10, 600)
+        self.gamescreen.drawWall(myWall)
 
         self.speed = MOVERATE
        

@@ -43,14 +43,14 @@ class GameScreen(object):
 
         pygame.display.flip()
 
-    def drawBackground(self):
-        self.screen.blit(self.bg,(0,0))
+    def drawWall(self, wall):
+        self.screen.blit(self.hero, (0,0))
 
-    def drawCamera(self, cameraX, cameraY, heroX, heroY):
-        self.screen.blit(self.bg,(0 - cameraX, 0 - cameraY))
-        
+    def drawBackground(self):
+        self.screen.blit(self.bg, (0, 0))
+       
     def drawHero(self):
-        self.screen.blit(self.hero,(START_X, START_Y))
+        self.screen.blit(self.hero, (START_X, START_Y))
         #pygame.display.flip()
         #pygame.display.update()
 
