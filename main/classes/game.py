@@ -15,9 +15,7 @@ class Game(object):
         wall_list = pygame.sprite.Group()
         myWall = Wall(0, 0, 10, 600)
         self.gamescreen.drawWall(myWall)
-
-        self.speed = MOVERATE
-       
+      
         self.runGame()
 
     def runGame(self):
@@ -26,6 +24,9 @@ class Game(object):
         moveUp = False
         moveDown = False
         gameOverMode = False
+
+        cameraX = 0
+        cameraY = 0
 
         heroImg = IMG_HERO_D
 
@@ -38,6 +39,21 @@ class Game(object):
         while True:
             # draw background here prevents sprite duplication
             self.gamescreen.drawBackground()
+
+            heroX = heroObj['x']
+            heroY = heroObj['y']
+
+            if (cameraX + START_X) - heroX > CAMERASLACK:
+                # 140 + 100 - 140 = 100
+                cameraX = heroX + CAMERASLACK - START_X
+            elif heroX - (cameraX + START_X) > CAMERASLACK:
+                cameraX = heroX - CAMERASLACK - START_X
+            if (cameraY + START_Y) - heroY > CAMERASLACK:
+                cameraY = heroY + CAMERASLACK - START_Y
+            elif heroY - (cameraY + START_Y) > CAMERASLACK:
+                cameraY = heroY - CAMERASLACK - START_Y
+
+            self.gamescreen.drawCamera(cameraX, cameraY)
            
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -80,16 +96,16 @@ class Game(object):
                         
             if not gameOverMode:
                 if moveLeft:
-                    heroObj['x'] -= self.speed
+                    heroObj['x'] -= MOVERATE
                     self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), IMG_HERO_L1)
                 if moveRight:
-                    heroObj['x'] += self.speed 
+                    heroObj['x'] += MOVERATE 
                     self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), IMG_HERO_R1)
                 if moveUp:
-                    heroObj['y'] -= self.speed 
+                    heroObj['y'] -= MOVERATE 
                     self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), IMG_HERO_U1)
                 if moveDown:
-                    heroObj['y'] += self.speed 
+                    heroObj['y'] += MOVERATE 
                     self.gamescreen.heroWalk((heroObj['x'], heroObj['y']), IMG_HERO_D)
                         
     def endGame(self):
