@@ -44,7 +44,6 @@ class Game(object):
             heroY = heroObj['y']
 
             if (cameraX + START_X) - heroX > CAMERASLACK:
-                # 140 + 100 - 140 = 100
                 cameraX = heroX + CAMERASLACK - START_X
             elif heroX - (cameraX + START_X) > CAMERASLACK:
                 cameraX = heroX - CAMERASLACK - START_X
