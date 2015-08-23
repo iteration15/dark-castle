@@ -30,9 +30,9 @@ class Game(object):
 
         heroImg = IMG_HERO_D
 
-        heroObj = {'surf' : heroImg,
-                             'x' : START_X,
-                             'y' : START_Y,
+        heroObj = {'surf'     : heroImg,
+                             'x'           : START_X,
+                             'y'           : START_Y,
                              'health' : MAXHEALTH}
         
         # main game loop
@@ -45,6 +45,7 @@ class Game(object):
 
             if (cameraX + START_X) - heroX > CAMERASLACK:
                 cameraX = heroX + CAMERASLACK - START_X
+                #cameraX = heroX - START_X
             elif heroX - (cameraX + START_X) > CAMERASLACK:
                 cameraX = heroX - CAMERASLACK - START_X
             if (cameraY + START_Y) - heroY > CAMERASLACK:

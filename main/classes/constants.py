@@ -4,12 +4,12 @@ START_Y = 140
 START_X = 140
 DIS_Y = 550
 DIS_X = 500
-MOVERATE = 2
+MOVERATE = 5
 RFONT_SIZE = 48
 SFONT_SIZE = 20
 MAXHEALTH = 3
 BLUE = (50, 50, 255)
-CAMERASLACK = 100
+CAMERASLACK = 0
 
 IMG_DIR = join(dirname(dirname(abspath(__file__))),"graphics") + sep
 
